@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Sports Store</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <style>
+        .payment-method {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .payment-method:hover {
+            background-color: #f8f9fa;
+            border-color: #28a745;
+        }
+        .payment-method.selected {
+            border-color: #28a745;
+            background-color: #f8f9fa;
+        }
+        .payment-logo {
+            height: 40px;
+            margin-right: 15px;
+        }
+        .payment-details {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">Sports Store</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/products.html" class="nav-link">Products</a>
+                <a href="/cart.html" class="nav-link">Cart <span id="cart-count">0</span></a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <h1>Checkout</h1>
+            
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3>Order Summary</h3>
+                            <div id="checkout-items"></div>
+                            <hr>
+                            <div class="d-flex justify-content-between">
+                                <h4>Total:</h4>
+                                <h4 id="checkout-total">$0.00</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h3>Select Payment Method</h3>
+                            
+                            <!-- eSewa Payment Option -->
+                            <div class="payment-method" onclick="selectPayment('esewa')">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://esewa.com.np/common/images/esewa_logo.png" alt="eSewa" class="payment-logo">
+                                    <div>
+                                        <h4>Pay with eSewa</h4>
+                                        <p class="mb-0">Fast and secure payment with eSewa</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- PayPal Payment Option -->
+                            <div class="payment-method" onclick="selectPayment('paypal')">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://www.paypalobjects.com/webstatic/mktg/logo/pp_cc_mark_37x23.jpg" alt="PayPal" class="payment-logo">
+                                    <div>
+                                        <h4>Pay with PayPal</h4>
+                                        <p class="mb-0">Safe payment online with PayPal</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="payment-details mt-4">
+                                <button id="complete-payment" class="btn btn-primary btn-lg btn-block" disabled>
+                                    Complete Payment
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        let selectedPayment = '';
+        let cartItems = [];
+
+        // Load cart items when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCartItems();
+        });
+
+        function loadCartItems() {
+            const savedCart = localStorage.getItem('cart');
+            if (savedCart) {
+                cartItems = JSON.parse(savedCart);
+                displayCheckoutItems();
+                calculateTotal();
+            }
+        }
+
+        function displayCheckoutItems() {
+            const checkoutContainer = document.getElementById('checkout-items');
+            checkoutContainer.innerHTML = '';
+            
+            cartItems.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'd-flex justify-content-between align-items-center mb-2';
+                itemElement.innerHTML = `
+                    <span>${item.name} x ${item.quantity}</span>
+                    <span>$${(item.price * item.quantity).toFixed(2)}</span>
+                `;
+                checkoutContainer.appendChild(itemElement);
+            });
+        }
+
+        function calculateTotal() {
+            const total = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('checkout-total').textContent = `$${total.toFixed(2)}`;
+            return total;
+        }
+
+        function selectPayment(method) {
+            selectedPayment = method;
+            
+            // Update UI to show selected payment method
+            document.querySelectorAll('.payment-method').forEach(elem => {
+                elem.classList.remove('selected');
+            });
+            event.currentTarget.classList.add('selected');
+            
+            // Enable the payment button
+            document.getElementById('complete-payment').disabled = false;
+        }
+
+        document.getElementById('complete-payment').addEventListener('click', function() {
+            const total = calculateTotal();
+            
+            if (selectedPayment === 'esewa') {
+                // eSewa Payment Integration
+                const esewaParams = {
+                    amt: total,
+                    pdc: 0,
+                    psc: 0,
+                    txAmt: 0,
+                    tAmt: total,
+                    pid: 'ORDER' + Date.now(),
+                    scd: 'EPAYTEST', // Your merchant code
+                    su: 'http://localhost:3000/success.html',
+                    fu: 'http://localhost:3000/failure.html'
+                };
+                
+                // Create and submit eSewa form
+                const form = document.createElement('form');
+                form.setAttribute('method', 'POST');
+                form.setAttribute('action', 'https://uat.esewa.com.np/epay/main');
+
+                for (const key in esewaParams) {
+                    const hiddenField = document.createElement('input');
+                    hiddenField.setAttribute('type', 'hidden');
+                    hiddenField.setAttribute('name', key);
+                    hiddenField.setAttribute('value', esewaParams[key]);
+                    form.appendChild(hiddenField);
+                }
+
+                document.body.appendChild(form);
+                form.submit();
+            } else if (selectedPayment === 'paypal') {
+                // PayPal Payment Integration
+                // Replace with your PayPal integration
+                window.location.href = `https://www.paypal.com/checkoutnow?amount=${total}`;
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "carts": {
+    "cart_mduo9kqgg": {
+      "items": []
+    },
+    "cart_lpl3gfuno": {
+      "items": []
+    },
+    "cart_8rcio57sc": {
+      "items": [
+        {
+          "productId": "2",
+          "quantity": 1,
+          "name": "Premium Soccer Cleats",
+          "price": 89.99
+        },
+        {
+          "productId": "15",
+          "quantity": 1,
+          "name": "Sports Bag",
+          "price": 44.99
+        }
+      ]
+    }
+  }
+}

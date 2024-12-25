@@ -1,0 +1,184 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": " Soccer Ball",
+      "price": 29.99,
+      "description": "Official size and weight soccer ball for professional matches",
+      "image": "/images/soccer-ball.jpg",
+      "category": "Soccer",
+      "featured": true,
+      "stock": 50
+    },
+    {
+      "id": 2,
+      "name": "Premium Soccer Cleats",
+      "price": 89.99,
+      "description": "High-performance soccer cleats for optimal grip and control",
+      "image": "/images/cleats.jpg",
+      "category": "Soccer",
+      "featured": true,
+      "stock": 30
+    },
+    {
+      "id": 3,
+      "name": "  Not wilson its alison's ",
+      "price": 39.99,
+      "description": "Official size indoor/outdoor basketball with superior grip",
+      "image": "/images/basketball.jpg",
+      "category": "Basketball",
+      "featured": true,
+      "stock": 45
+    },
+    {
+      "id": 4,
+      "name": "Basketball Jersey Set",
+      "price": 44.99,
+      "description": "Breathable basketball jersey with matching shorts",
+      "image": "/images/basketball-jersey.jpg",
+      "category": "Basketball",
+      "featured": true,
+      "stock": 60
+    },
+    {
+      "id": 5,
+      "name": "Basketball Shoes",
+      "price": 99.99,
+      "description": "High-top basketball shoes with ankle support and cushioning",
+      "image": "/images/basketball-shoes.jpg",
+      "category": "Basketball",
+      "featured": true,
+      "stock": 35
+    },
+    {
+      "id": 6,
+      "name": "Cricket Bat - Premium",
+      "price": 129.99,
+      "description": "Professional grade cricket bat made from English willow",
+      "image": "/images/cricket-bat.jpg",
+      "category": "Cricket",
+      "featured": true,
+      "stock": 25
+    },
+    {
+      "id": 7,
+      "name": "Cricket Ball Set",
+      "price": 19.99,
+      "description": "Set of 3 leather cricket balls for matches and practice",
+      "image": "/images/cricket-balls.jpg",
+      "category": "Cricket",
+      "featured": false,
+      "stock": 40
+    },
+    {
+      "id": 8,
+      "name": "Cricket Helmet",
+      "price": 59.99,
+      "description": "Protective cricket helmet with adjustable fitting",
+      "image": "/images/cricket-helmet.jpg",
+      "category": "Cricket",
+      "featured": true,
+      "stock": 30
+    },
+    {
+      "id": 9,
+      "name": "Basketball Hoop",
+      "price": 199.99,
+      "description": "Adjustable height basketball hoop with backboard",
+      "image": "/images/basketball-hoop.jpg",
+      "category": "Basketball",
+      "featured": true,
+      "stock": 15
+    },
+    {
+      "id": 10,
+      "name": "Cricket Pads",
+      "price": 49.99,
+      "description": "Lightweight batting pads with enhanced protection",
+      "image": "/images/cricket-pads.jpg",
+      "category": "Cricket",
+      "featured": false,
+      "stock": 35
+    },
+    {
+      "id": 12,
+      "name": "Basketball Training Set",
+      "price": 69.99,
+      "description": "Includes training aids for dribbling and shooting practice",
+      "image": "/images/basketball-training.jpg",
+      "category": "Basketball",
+      "featured": false,
+      "stock": 20
+    },
+    {
+      "id": 13,
+      "name": "Cricket Gloves",
+      "price": 34.99,
+      "description": "Premium batting gloves with extra padding",
+      "image": "/images/cricket-gloves.jpg",
+      "category": "Cricket",
+      "featured": false,
+      "stock": 45
+    },
+    {
+      "id": 14,
+      "name": "Sports Water Bottle",
+      "price": 14.99,
+      "description": "1L sports water bottle with easy-drink cap",
+      "image": "/images/water-bottle.jpg",
+      "category": "Accessories",
+      "featured": false,
+      "stock": 100
+    },
+    {
+      "id": 15,
+      "name": "Sports Bag",
+      "price": 44.99,
+      "description": "Large capacity sports bag with multiple compartments",
+      "image": "/images/sports-bag.jpg",
+      "category": "Accessories",
+      "featured": false,
+      "stock": 55
+    },
+    {
+      "id": 16,
+      "name": "Manchester United Home Jersey",
+      "price": 89.99,
+      "description": "Official Manchester United home jersey for the current season",
+      "image": "/images/man-utd-jersey.jpg",
+      "category": "Soccer",
+      "featured": true,
+      "stock": 25
+    },
+    {
+      "id": 17,
+      "name": "Real Madrid Home Jersey",
+      "price": 89.99,
+      "description": "Official Real Madrid home jersey for the current season",
+      "image": "/images/real-madrid-jersey.jpg",
+      "category": "Soccer",
+      "featured": true,
+      "stock": 25
+    },
+    {
+      "id": 19,
+      "name": "PSG Home Jersey",
+      "price": 89.99,
+      "description": "Official Paris Saint-Germain home jersey for the current season",
+      "image": "/images/psg-jersey.jpg",
+      "category": "Soccer",
+      "featured": false,
+      "stock": 20
+    },
+    {
+      "id": 20,
+      "name": "Bayern Munich  third Jersey",
+      "price": 89.99,
+      "description": "Official Bayern Munich home jersey for the current season",
+      "image": "/images/bayern-jersey.jpg",
+      "category": "Soccer",
+      "featured": false,
+      "stock": 20
+    }
+  ]
+}
